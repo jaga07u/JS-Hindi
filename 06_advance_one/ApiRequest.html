@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background-color: #212121; color: #fff;">
+
+<!-- 0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete. -->
+<div id="box">
+    <div id="contain"></div>
+    <div id="text">0</div>
+</div>
+<button id="start">start
+</button>
+    
+</body>
+<script>
+    const start=document.querySelector("#start");
+    // const contain=document.querySelector("#contain");
+    const requestUrl='https://api.github.com/users/hiteshchoudhary'
+     const xhr=new XMLHttpRequest();
+     xhr.open('GET',requestUrl)
+     let data;
+     xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+           const  data=JSON.parse(this.responseText);
+           console.log(typeof data);
+           console.log(data.followers)
+           console.log(data);
+           const followers=document.querySelector("#text");
+           const contain=document.querySelector("#contain");
+        start.addEventListener("click",function(){
+          contain.style.backgroundImage="url(https://cdn.hashnode.com/res/hashnode/image/upload/v1611405159938/G9wcxrc5i.jpeg?w=500&h=500&auto=compress,format&format=webp)";
+          contain.style.backgroundPosition="centre"
+         followers.innerHTML=data.followers;
+     })
+        }
+    }
+     //console.log(xhr.readyState)
+     xhr.send();
+    //  const start=document.querySelector("#start");
+    //  const contain=document.querySelector("#contain");
+    //  console.log(contain);
+    //  const followers=document.querySelector("#text")
+    //  start.addEventListener("click",function(){
+    //      contain.style.backgroudColor="red";
+    //      followers.innerHTML=data.followers;
+    //  })
+</script>
+</html>

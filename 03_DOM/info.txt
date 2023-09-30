@@ -1,0 +1,5 @@
+*Important Points *
+--------------------------------------------------------------------------------------
+1.In "doumentByCLassNames " it returns a HtmlCollection.
+2.In  "querySelectorAll " it returns a NodeList.
+---------------------------------------------------------------------------------------
